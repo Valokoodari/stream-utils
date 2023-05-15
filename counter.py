@@ -11,8 +11,8 @@ filename = sys.argv[1]
 
 if os.path.isfile(filename):
     with open(filename, "r") as f:
-        text, counter = f.read().rsplit(" ", 1)
-        counter = int(counter)
+        text, counter = f.read().strip().rsplit(" ", 1)
+        counter = int(counter) + 1
 
 with open(filename, "w") as f:
-    f.write(f"{text} {counter + 1}")
+    f.write(f"{' ' if counter < 10 else ''}{text} {counter}")
